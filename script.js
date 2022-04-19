@@ -39,6 +39,8 @@ function load() {
   const month = dt.getMonth();
   const year = dt.getFullYear();
 
+  // const weekends = dt.getDay();
+
   const firstDayOfMonth = new Date(year, month, 1);
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   
@@ -59,10 +61,15 @@ function load() {
     const daySquare = document.createElement('div');
     daySquare.classList.add('day');
 
-    const dayString = `${month + 1}/${i - paddingDays}/${year}`;
+    let dayOfWeek = new Date(i-paddingDays).getDay();
+    let isWeekend = (dayOfWeek === 6) || (dayOfWeek  === 0); // 6 = Saturday, 0 = Sunday
+    const dayString =
+       `${month + 1}/${i - paddingDays}/${year}`;
 
     if (i > paddingDays) {
+      //TODO red on weekends
       daySquare.innerText = (i - paddingDays).toString();
+      if(isWeekend) daySquare.className = 'weekend';
       const eventForDay = events.find(e => e.date === dayString);
 
       if (i - paddingDays === day && nav === 0) {
@@ -111,11 +118,11 @@ function saveEvent() {
   }
 }
 
-// function deleteEvent() {
-//   events = events.filter(e => e.date !== clicked);
-//   localStorage.setItem('events', JSON.stringify(events));
-//   closeModal();
-// }
+function deleteEvent() {
+  events = events.filter(e => e.date !== clicked);
+  localStorage.setItem('events', JSON.stringify(events));
+  closeModal();
+}
 
 function initButtons() {
   document.getElementById('nextButton').addEventListener('click', () => {
@@ -130,8 +137,8 @@ function initButtons() {
 
   document.getElementById('saveButton').addEventListener('click', saveEvent);
   document.getElementById('cancelButton').addEventListener('click', closeModal);
-  // document.getElementById('deleteButton').addEventListener('click', deleteEvent);
-  // document.getElementById('closeButton').addEventListener('click', closeModal);
+  document.getElementById('deleteButton').addEventListener('click', deleteEvent);
+  document.getElementById('closeButton').addEventListener('click', closeModal);
 }
 
 initButtons();
