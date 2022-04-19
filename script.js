@@ -51,7 +51,7 @@ function load() {
   const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
 
   document.getElementById('monthDisplay').innerText = 
-    `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
+    `${dt.toLocaleDateString('ko-KR', { month: 'long' })} ${year}`;
 
   calendar.innerHTML = '';
 
@@ -62,7 +62,7 @@ function load() {
     const dayString = `${month + 1}/${i - paddingDays}/${year}`;
 
     if (i > paddingDays) {
-      daySquare.innerText = i - paddingDays;
+      daySquare.innerText = (i - paddingDays).toString();
       const eventForDay = events.find(e => e.date === dayString);
 
       if (i - paddingDays === day && nav === 0) {
