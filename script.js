@@ -25,7 +25,7 @@ function openModal(date) {
     newEventModal.style.display = 'block';
   }
 
-  backDrop.style.display = 'block';
+  backDrop.style.display = 'none';
 }
 
 function load() {
@@ -111,11 +111,11 @@ function saveEvent() {
   }
 }
 
-function deleteEvent() {
-  events = events.filter(e => e.date !== clicked);
-  localStorage.setItem('events', JSON.stringify(events));
-  closeModal();
-}
+// function deleteEvent() {
+//   events = events.filter(e => e.date !== clicked);
+//   localStorage.setItem('events', JSON.stringify(events));
+//   closeModal();
+// }
 
 function initButtons() {
   document.getElementById('nextButton').addEventListener('click', () => {
@@ -130,8 +130,8 @@ function initButtons() {
 
   document.getElementById('saveButton').addEventListener('click', saveEvent);
   document.getElementById('cancelButton').addEventListener('click', closeModal);
-  document.getElementById('deleteButton').addEventListener('click', deleteEvent);
-  document.getElementById('closeButton').addEventListener('click', closeModal);
+  // document.getElementById('deleteButton').addEventListener('click', deleteEvent);
+  // document.getElementById('closeButton').addEventListener('click', closeModal);
 }
 
 initButtons();
