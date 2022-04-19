@@ -16,10 +16,10 @@ const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 function openModal(date) {
   clicked = date;
 
-  const eventForDay = events.find(e => e.date === clicked);
+
   const clickedDate = document.getElementById('clicked_date');
   clickedDate.innerText = date;
-
+  const eventForDay = events.find(e => e.date === clicked);
   if (eventForDay) {
     document.getElementById('eventText').innerText = eventForDay.title;
     deleteEventModal.style.display = 'block';
@@ -96,6 +96,7 @@ function load() {
 }
 
 function closeModal() {
+
   eventTitleInput.classList.remove('error');
   newEventModal.style.display = 'none';
   deleteEventModal.style.display = 'none';
