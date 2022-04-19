@@ -1,11 +1,11 @@
 body {
   display: flex;
-  margin-top: 50px;
+  margin-top: 10px;
   justify-content: center;
   background-color: #FFFCFF;
 }
 button {
-  width: 75px;
+  width: 100px;
   cursor: pointer;
   box-shadow: 0px 0px 2px gray;
   border: none;
@@ -46,7 +46,7 @@ button {
 }
 .day {
   width: 100px;
-  padding: 10px;
+  padding: 5px;
   height: 100px;
   cursor: pointer;
   box-sizing: border-box;
