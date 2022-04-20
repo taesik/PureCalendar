@@ -1,4 +1,4 @@
-let nav = 0;
+let nav = 0; //TODO Global state to discriminate which month are on now
 let clicked = null;
 let events = localStorage.getItem('events')
    ?
