@@ -1,6 +1,6 @@
 let nav = 0; //TODO Global state to discriminate which month are on now
-let clicked = null;
-let events = localStorage.getItem('events')
+let clicked = null; //TODO Global state using which day is clicked
+let events = localStorage.getItem('events') //TODO Global state to store events from localstorage
    ?
    JSON.parse(localStorage.getItem('events'))
    :
@@ -36,9 +36,7 @@ function openModal(date) {
 function load() {
   const dt = new Date();
 
-  if (nav !== 0) {
-    dt.setMonth(new Date().getMonth() + nav);
-  }
+  if (nav !== 0) dt.setMonth(new Date().getMonth() + nav);
 
   const day = dt.getDate();
   const month = dt.getMonth();
@@ -48,14 +46,16 @@ function load() {
 
   const firstDayOfMonth = new Date(year, month, 1);
   const daysInMonth = new Date(year, month + 1, 0).getDate();
+  //to know how many days in month
   
   const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
     weekday: 'long',
     year: 'numeric',
     month: 'numeric',
     day: 'numeric',
-  });
+  });// ex> Friday, 1/1/2021
   const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
+  //weekdays.indexOf('Friday')
 
   document.getElementById('monthDisplay').innerText = 
     `${dt.toLocaleDateString('ko-KR', { month: 'long' })} ${year}`;
@@ -102,7 +102,7 @@ function closeModal() {
   eventTitleInput.classList.remove('error');
   newEventModal.style.display = 'none';
   deleteEventModal.style.display = 'none';
-  backDrop.style.display = 'none';
+  // backDrop.style.display = 'none';
   eventTitleInput.value = '';
   clicked = null;
   load();
